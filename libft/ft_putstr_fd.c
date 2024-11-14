@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 13:59:51 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/14 14:03:18 by vdeliere         ###   ########.fr       */
+/*   Created: 2024/11/14 14:58:34 by vdeliere          #+#    #+#             */
+/*   Updated: 2024/11/14 15:39:42 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -23,20 +24,17 @@ static int	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putstr_fd(char *s, int fd)
 {
-	unsigned int	i;
-	char			*str;
+	int	len;
 
-	i = 0;
-	str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	while (i < ft_strlen(s))
-	{
-		str[i] = f(i, s[i]);
-		i++;
-	}
-	str[i] = '\0';
-	return (str[i]);
+	len = ft_strlen(s);
+	write (fd, s, len);
 }
+/*int	main(int ac, char **av)
+{
+	if (ac != 3)
+		return (0);
+	ft_putstr_fd (av[1], atoi(av[2]));
+	return (0);
+}*/
