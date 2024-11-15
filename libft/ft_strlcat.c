@@ -6,20 +6,18 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:14:55 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/11 13:48:15 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:35:09 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <bsd/string.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t		i;
+	size_t	i;
 	size_t	dst_l;
 	size_t	src_l;
-	
+
 	src_l = 0;
 	dst_l = 0;
 	i = 0;
@@ -40,8 +38,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	return (dst_l + src_l);
 }
-
-int	main(void)
+/*int	main(void)
 {
 	char	dest1[20] = "Pinpin ";
 	char	dest2[20] = "Pinpin ";
@@ -54,4 +51,4 @@ int	main(void)
 	size2 = strlcat(dest2, src2, 20);
 	printf("%s, %ld\n", dest1, size1);
 	printf("%s, %ld\n", dest2, size2);
-}
+}*/

@@ -6,22 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:59:51 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/14 14:03:18 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:56:45 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-static int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -38,5 +27,24 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		i++;
 	}
 	str[i] = '\0';
-	return (str[i]);
+	return (str);
 }
+/*static char	ft_uppercase (unsigned int i, char c)
+{
+	if (i != 0)
+	{
+		c = c - 32;
+	}
+	return (c);
+}
+int	main(int ac, char **av)
+{
+	if(ac != 2)
+	{
+		printf("Mauvais nombre d'arguments\n");
+		return(0);
+	}
+	ft_strmapi(av[1], ft_uppercase);
+	printf("%s\n", ft_strmapi(av[1], ft_uppercase));
+	return (0);
+}*/

@@ -6,23 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:58:34 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/14 15:39:42 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:50:26 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-static int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

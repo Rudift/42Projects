@@ -6,23 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:19:21 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/13 14:16:58 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:54:40 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-
-static int	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h" 
 
 char	*ft_strdup(const char *s)
 {

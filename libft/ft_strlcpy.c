@@ -6,15 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:55:21 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/11 12:12:35 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:33:59 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stddef.h>
-#include <bsd/string.h>
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t siz)
 {
@@ -37,6 +33,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t siz)
 		i++;
 	return (i);
 }
+
 /*int	main(int ac, char **av)
 {
 	char	dest1[atoi(av[2])];
@@ -48,7 +45,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t siz)
 		return (0);
 	size1 = ft_strlcpy(dest1, av[1], atoi(av[2]));
 	size2 = strlcpy(dest2, av[1], atoi(av[2]));
-	printf("la copie de %s via ft_strlcpy est : %s\n size : %d\n", av[1], dest1, size1);
-	printf("la copie de %s via strlcpy est : %s\n size : %d\n", av[1], dest2, size2);
+	printf("ft_strlcpy : %s\n size : %d\n", dest1, size1);
+	printf("strlcpy : %s\n size : %d\n", dest2, size2);
 	return(0);
 }*/

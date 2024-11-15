@@ -6,26 +6,15 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:38:03 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/14 15:45:55 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:00:15 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-
-static int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h" 
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int	len;
+	size_t	len;
 
 	len = ft_strlen(s);
 	write (fd, s, len);

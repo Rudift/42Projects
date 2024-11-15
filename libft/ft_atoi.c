@@ -6,12 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:45:31 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/12 11:13:01 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:56:02 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
 static int	ft_isspace(char c)
 {

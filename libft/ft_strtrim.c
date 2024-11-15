@@ -6,12 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:50:35 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/12 16:08:29 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:58:29 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h" 
 
 static int	ft_nbocur(char const *str, char const c)
 {
@@ -25,16 +24,6 @@ static int	ft_nbocur(char const *str, char const c)
 		str++;
 	}
 	return (count);
-}
-
-static int	ft_strlen(char const *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
 }
 
 static int	ft_sizetrim(char const *s1, char const *set)

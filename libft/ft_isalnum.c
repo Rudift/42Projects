@@ -6,12 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:41:44 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/07 11:46:20 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:16:44 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
+#include "libft.h"
 
 int	ft_isalnum(int character)
 {

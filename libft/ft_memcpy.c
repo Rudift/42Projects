@@ -6,14 +6,13 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:23:11 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/08 13:51:01 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:10:43 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-void	*memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t		i;
 	char		*d;
@@ -35,7 +34,7 @@ void	*memcpy(void *dest, const void *src, size_t n)
 
 	if (ac != 3)
 		return (0);
-	memcpy (dest, av[1], atoi(av[2]));
+	ft_memcpy (dest, av[1], atoi(av[2]));
 	printf("%s", dest);
 	return (0);		
 }*/

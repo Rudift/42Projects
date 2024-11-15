@@ -6,43 +6,37 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:52:24 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/14 16:11:56 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:27:53 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-
-static void ft_putchar_fd(char c, int fd)
-{
-	write (fd, &c, 1);
-}
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n < 0)
+	if (n == -2147483648)
 	{
-		ft_putchar_fd('-', fd);
+		write (fd, "-2", 2);
+		ft_putnbr_fd (147483648, fd);
+	}
+	else if (n < 0)
+	{
+		write (fd, "-", 1);
 		n = -n;
+		ft_putnbr_fd (n, fd);
 	}
-	if (n == 2147483647)
+	else if (n > 9)
 	{
-		ft_putchar_fd ('2', fd);
-		ft_putnbr_fd (147483647, fd);
-	}
-	if (n > 9)
-	{
-		ft_putchar_fd ((n % 10) + 48, fd);
-		ft_putnbr_fd (n / 10, fd);	
+		ft_putnbr_fd (n / 10, fd);
+		ft_putchar_fd (n % 10 + 48, fd);
 	}
 	else
-		ft_putchar_fd ((n % 10) + 48, fd);
+		ft_putchar_fd (n + 48, fd);
 }
-
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
-	if (ac != 2)
+	if (ac != 3)
 		return (0);
-	ft_putnbr_fd (atoi(av[1]), atoi(av[2]));
+	ft_putnbr_fd(atoi(av[1]), atoi(av[2]));
 	return (0);
-}
+}*/

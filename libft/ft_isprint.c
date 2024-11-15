@@ -6,19 +6,18 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:59:53 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/07 12:07:10 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:21:14 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
+#include "libft.h"
 
-int	ft_isprint(int character)
+int	ft_isprint(int c)
 {
-	if ((character >= 0 && character <= 31) || character == 127)
-		return (0);
-	else
+	if (c > 31 && c < 127)
 		return (16384);
+	else
+		return (0);
 }
 /*int	main(int ac, char **av)
 {

@@ -6,13 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:38:56 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/12 09:56:22 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:51:58 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

@@ -6,28 +6,38 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:15:16 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/13 18:57:09 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:47:56 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
 static int	ft_sizeint(int n)
 {
 	int	size;
 
 	size = 0;
-	if (n < 0)
+	if (n <= 0)
+	{
 		size++;
-	if (n == 0)
-		return (1);
+		n = -n;
+	}
 	while (n != 0)
 	{
 		n = n / 10;
 		size++;
 	}
 	return (size);
+}
+
+static char	*ft_mallocator(int size)
+{
+	char	*str;
+
+	str = (char *) malloc(size * sizeof(char));
+	if (!str)
+		return (NULL);
+	return (str);
 }
 
 char	*ft_itoa(int n)
@@ -40,9 +50,8 @@ char	*ft_itoa(int n)
 	i = 0;
 	neg = 0;
 	size = ft_sizeint (n);
-	str = (char *) malloc(size * sizeof(char));
-	if (!str)
-		return (NULL);
+	printf("%d\n", size);
+	str = ft_mallocator (size);
 	if (n < 0)
 	{
 		str[0] = '-';
@@ -63,6 +72,7 @@ char	*ft_itoa(int n)
 int	main(int ac, char **av)
 {
 	char	*str;
+
 	if (ac != 2)
 		return (0);
 	str = ft_itoa(atoi(av[1]));

@@ -6,12 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:36:58 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/07 11:38:53 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:18:01 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
+#include "libft.h"
 
 int	ft_isdigit(int character)
 {

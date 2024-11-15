@@ -6,12 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:04:02 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/13 16:13:26 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:52:54 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
 static int	ft_nbmot(char const *s, char c)
 {
@@ -31,7 +30,7 @@ static int	ft_nbmot(char const *s, char c)
 	return (count);
 }
 
-static int	ft_strlen(const char *s, char c)
+static int	ft_strlen_c(const char *s, char c)
 {
 	int	i;
 
@@ -48,7 +47,7 @@ static char	*ft_strcdup(const char *s, char c)
 	int		i;
 
 	i = 0;
-	size = ft_strlen(s, c);
+	size = ft_strlen_c(s, c);
 	res = (char *)malloc(size * sizeof(char));
 	if (!res)
 		return (NULL);
@@ -59,17 +58,6 @@ static char	*ft_strcdup(const char *s, char c)
 	}
 	res[i] = '\0';
 	return (res);
-}
-
-static char	*ft_strchr(const char *s, int c)
-{
-	while (*s != '\0')
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)

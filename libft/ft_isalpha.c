@@ -6,12 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:05:27 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/07 11:40:03 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:17:40 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
+#include "libft.h"
 
 int	ft_isalpha(int character)
 {
