@@ -6,40 +6,11 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:50:35 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 15:58:29 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/16 15:29:19 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h" 
-
-static int	ft_nbocur(char const *str, char const c)
-{
-	int	count;
-
-	count = 0;
-	while (*str)
-	{
-		if (*str == c)
-			count ++;
-		str++;
-	}
-	return (count);
-}
-
-static int	ft_sizetrim(char const *s1, char const *set)
-{
-	int	i;
-	int	supp_size;
-
-	i = 0;
-	supp_size = 0;
-	while (set[i] != '\0')
-	{
-		supp_size += ft_nbocur(s1, set[i]);
-		i++;
-	}
-	return (ft_strlen (s1) - supp_size);
-}
 
 static int	ft_isset(char const *set, char c)
 {
@@ -57,24 +28,22 @@ static int	ft_isset(char const *set, char c)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
+	int		start;
+	int		end;
 	char	*res;
-	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
-	res = (char *)malloc(ft_sizetrim(s1, set) * sizeof(char));
+	if (!s1 || !set)
+		return (NULL);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_isset(set, s1[start]))
+		start ++;
+	while (end > start && ft_isset (set, s1[end - 1]))
+		end --;
+	res = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!res)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		if (ft_isset(set, s1[i]) == 0)
-		{
-			res[j] = s1[i];
-			j++;
-		}
-		i++;
-	}
+	ft_strlcpy (res, s1 + start, end - start + 1);
 	return (res);
 }
 /*int	main(int ac, char **av)

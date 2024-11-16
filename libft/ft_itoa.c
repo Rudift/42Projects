@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:15:16 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 17:47:56 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:52:05 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ static char	*ft_mallocator(int size)
 {
 	char	*str;
 
-	str = (char *) malloc(size * sizeof(char));
-	if (!str)
-		return (NULL);
+	str = (char *) malloc((size + 1) * sizeof(char));
 	return (str);
 }
 
@@ -44,31 +42,31 @@ char	*ft_itoa(int n)
 {
 	char	*str;
 	int		size;
-	int		neg;
-	int		i;
+	int		nb;
 
-	i = 0;
-	neg = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	nb = n;
 	size = ft_sizeint (n);
-	printf("%d\n", size);
 	str = ft_mallocator (size);
+	if (!str)
+		return (NULL);
 	if (n < 0)
-	{
-		str[0] = '-';
-		n = -n;
-		neg = 1;
-		i++;
-	}
+		nb = -n;
 	str[size] = '\0';
-	while (i < size)
+	size--;
+	if (n == 0)
+		str[size] = '0';
+	while (nb > 0)
 	{
-		str[size - i - 1 + neg] = (n % 10) + 48;
-		n = n / 10;
-		i++;
+		str[size--] = (nb % 10) + 48;
+		nb = nb / 10;
 	}
+	if (n < 0)
+		str[size] = '-';
 	return (str);
 }
-
+/*
 int	main(int ac, char **av)
 {
 	char	*str;
@@ -80,4 +78,4 @@ int	main(int ac, char **av)
 	printf("%s\n", str);
 	free (str);
 	return (0);
-}
+}*/

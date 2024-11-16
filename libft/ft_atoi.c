@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:45:31 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 14:56:02 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:43:35 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ int	ft_atoi(const char *nptr)
 	while (ft_isspace(nptr[i]) == 1)
 		i++;
 	if (nptr[i] == '-')
+	{
 		sign = -sign;
-	i++;
+		i++;
+	}
+	else if (nptr[i] == '+')
+		i++;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		res *= 10;
-		res = res + (nptr[i] - 48);
+		res = res * 10 + (nptr[i] - 48);
 		i++;
 	}
 	return (sign * res);

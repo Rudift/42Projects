@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:25:37 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 17:26:01 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/16 15:57:12 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	tot_size = ft_strlen(s1) + ft_strlen(s2);
+	tot_size = ft_strlen(s1) + ft_strlen(s2) + 1;
 	if (*s1 == '\0' || *s2 == '\0')
 		tot_size += 1;
 	res = (char *)malloc(tot_size * sizeof(char));
 	if (!res)
 		return (NULL);
-	printf("%d\n", tot_size);
 	while (s1[i] != '\0')
 	{	
 		res[i] = s1[i];
@@ -38,6 +37,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		res[i + j] = s2[j];
 		j++;
 	}
+	res[i + j] = '\0';
 	return (res);
 }
 /*int	main(int ac, char **av)

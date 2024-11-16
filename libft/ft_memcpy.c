@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:23:11 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 16:10:43 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/16 14:55:08 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	d = (char *)dest;
 	s = (const char *)src;
+	if (!src && !dest)
+		return (NULL);
 	while (i < n)
 	{
 		d[i] = s[i];

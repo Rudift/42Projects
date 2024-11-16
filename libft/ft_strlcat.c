@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:14:55 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 14:35:09 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:49:51 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,22 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	dst_l;
 	size_t	src_l;
 
-	src_l = 0;
-	dst_l = 0;
+	if (!dst && size == 0)
+		return (0);
+	src_l = ft_strlen(src);
+	dst_l = ft_strlen(dst);
 	i = 0;
-	while (dst_l < size && dst[dst_l] != '\0')
-		dst_l++;
-	while (src[src_l] != '\0')
-		src_l++;
-	if (size <= dst_l)
-		return (size + src_l);
-	if ((src_l + dst_l) >= size)
+	if (dst_l < size - 1 && size > 0)
 	{
-		while (src[i] != '\0' && (dst_l + i + 1) < size - 1)
+		while (src[i] != '\0' && (dst_l + i) < size - 1)
 		{
 			dst[dst_l + i] = src[i];
 			i++;
 		}
 		dst[dst_l + i] = '\0';
 	}
+	if (size <= dst_l)
+		dst_l = size;
 	return (dst_l + src_l);
 }
 /*int	main(void)
