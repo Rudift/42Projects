@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 14:43:28 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/18 11:58:18 by vdeliere         ###   ########.fr       */
+/*   Created: 2024/11/19 11:45:49 by vdeliere          #+#    #+#             */
+/*   Updated: 2024/11/19 13:09:55 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*n_lst;
+	t_list	*n_node;
+	void	*n_content;
 
-	i = 0;
-	while (*s != '\0')
+	n_lst = NULL;
+	while (lst)
 	{
-		s++;
-		i++;
+		n_content = f(lst->content);
+		if (!n_content)
+		{
+			ft_lstclear(&n_lst, del);
+			return (NULL);
+		}
+		n_node = ft_lstnew(n_content);
+		if (!n_content)
+		{
+			ft_lstclear(&n_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&n_lst, n_node);
+		lst = lst -> next;
 	}
-	i++;
-	while (i != 0)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s--;
-		i--;
-	}
-	if (c == '\0')
-		return ((char *)s);
-	return (NULL);
+	return (n_lst);
 }
-/*int	main(int ac, char **av)
-{
-	if (ac != 3)
-		return (0);
-	printf("%p\n", ft_strrchr(av[1], av[2][0])); 
-	printf("%p\n", strrchr(av[1], av[2][0]));
-	return (0); 
-}*/

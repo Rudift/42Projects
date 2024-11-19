@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:38:56 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 14:51:58 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:13:12 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t		i;
-	const char	*s1c;
-	const char	*s2c;
+	size_t			i;
+	unsigned char	*s1c;
+	unsigned char	*s2c;
 
 	i = 0;
-	s1c = (const char *)s1;
-	s2c = (const char *)s2;
-	if (n < 1)
-		return (0);
-	while (i < (n - 1) && s1c[i] != '\0' && s2c[i] != '\0')
+	s1c = (unsigned char *)s1;
+	s2c = (unsigned char *)s2;
+	while (i < n)
 	{
-		if (s1c[i] != s2c[i])
-			return ((unsigned char)s1c[i] - (unsigned char)s2c[i]);
+		if (s1c[i] < s2c[i])
+			return (-1);
+		else if (s1c[i] > s2c[i])
+			return (1);
 		i++;
 	}
-	return ((unsigned char)s1c[i] - (unsigned char)s2c[i]);
+	return (0);
 }
 /*int	main(int ac, char **av)
 {

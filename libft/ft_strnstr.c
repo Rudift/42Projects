@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:58:42 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 17:00:45 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:06:49 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	int		j;
 
 	i = 0;
-	if (*little == '\0')
+	if (little[i] == '\0')
 		return ((char *)big);
-	while (big[i] != '\0' && i < len)
+	if (!big && len == 0)
+		return (NULL);
+	while (big[i] && i < len)
 	{
 		j = 0;
-		while (big[i + j] == little[j])
-		{
-			if (little[j] == '\0')
-				return ((char *)(big + i));
+		while (little[j] && big[i + j] == little[j] && i + j < len)
 			j++;
-		}
+		if (little[j] == '\0')
+			return ((char *)&big[i]);
 		i++;
 	}
 	return (NULL);
@@ -39,5 +39,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return (0);
 	printf("ft_strnstr : %s\n", ft_strnstr(av[1], av[2], atoi(av[3])));
 	printf("strstr : %s\n", strstr(av[1], av[2]));
+	printf("ft_strnstr : %p\n", ft_strnstr(av[1], av[2], atoi(av[3])));
+	printf("strstr : %p\n", strstr(av[1], av[2]));
+
 	return (0);
 }*/

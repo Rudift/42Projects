@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:04:02 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/15 15:52:54 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:30:27 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,21 @@ static char	*ft_strcdup(const char *s, char c)
 	int		size;
 	char	*res;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	size = ft_strlen_c(s, c);
-	res = (char *)malloc(size * sizeof(char));
+	res = (char *)malloc((size + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
 	while (i < size)
 	{
-		res[i] = s[i];
+		if (s[i] != c)
+		{				
+			res[j] = s[i];
+			j++;
+		}
 		i++;
 	}
 	res[i] = '\0';
@@ -71,10 +77,10 @@ char	**ft_split(char const *s, char c)
 	if (!tab)
 		return (NULL);
 	i = 0;
-	while (*s == c)
-		s++;
 	while (nbmot != 0)
 	{
+		while (*s == c)
+			s++;
 		tab[i] = ft_strcdup(s, c);
 		s = ft_strchr(s, c) + 1;
 		i++;

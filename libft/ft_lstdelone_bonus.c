@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 14:43:28 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/18 11:58:18 by vdeliere         ###   ########.fr       */
+/*   Created: 2024/11/19 10:35:01 by vdeliere          #+#    #+#             */
+/*   Updated: 2024/11/19 10:51:36 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	int	i;
-
-	i = 0;
-	while (*s != '\0')
-	{
-		s++;
-		i++;
-	}
-	i++;
-	while (i != 0)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s--;
-		i--;
-	}
-	if (c == '\0')
-		return ((char *)s);
-	return (NULL);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }
-/*int	main(int ac, char **av)
+/*
+void	del(void *content)
 {
-	if (ac != 3)
-		return (0);
-	printf("%p\n", ft_strrchr(av[1], av[2][0])); 
-	printf("%p\n", strrchr(av[1], av[2][0]));
-	return (0); 
+	free(content);
+}
+
+int	main (void)
+{
+	t_list *node;
+
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (1);
+	node->content = ft_strdup("I'll be back !");
+	node->next = NULL;
+	printf("%s\n",(char *)node->content);
+	ft_lstdelone(node, del);
+	printf("%s\n", (char * )node->content);
 }*/
