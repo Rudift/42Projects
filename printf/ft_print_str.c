@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 15:24:58 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/20 11:59:29 by vdeliere         ###   ########.fr       */
+/*   Created: 2024/11/20 12:00:05 by vdeliere          #+#    #+#             */
+/*   Updated: 2024/11/20 13:19:04 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int ft_print_str(char *str)
+{
+  int count;
 
-/*Principale*/
-int ft_printf(const char *, ...);
-int	ft_print_char(int c);
-int	ft_print_format(char spec, va_list ap);
-#endif
+  count == 0;
+  while (*str)
+  {
+    ft_print_char((int)*str);
+    ++count;
+    ++str;
+  }
+  return(count);
+}
