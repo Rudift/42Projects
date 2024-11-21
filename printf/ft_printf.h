@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 15:24:58 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/20 11:59:29 by vdeliere         ###   ########.fr       */
+/*   Created: 2024/11/21 11:43:04 by vdeliere          #+#    #+#             */
+/*   Updated: 2024/11/21 13:43:02 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 
 /*Principale*/
 int ft_printf(const char *, ...);
-int	ft_print_char(int c);
+/*Fonction de triage*/
 int	ft_print_format(char spec, va_list ap);
+/*Fonctions specs*/
+int	ft_print_char(int c);
+int	ft_print_str(char* s);
+int ft_print_digit(long n, int base, char c);
+int ft_print_digit(long n, int base, char c);
+int ft_print_pnt(void *pnt);
+
+
 #endif

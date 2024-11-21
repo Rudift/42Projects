@@ -6,7 +6,7 @@
 /*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 12:00:05 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/20 13:19:04 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:59:53 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int ft_print_str(char *str)
 {
   int count;
 
-  count == 0;
+  count = 0;
   while (*str)
   {
     ft_print_char((int)*str);
