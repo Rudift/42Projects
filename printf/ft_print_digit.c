@@ -3,36 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_digit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 11:33:09 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/21 13:46:26 by vdeliere         ###   ########.fr       */
+/*   Created: 2024/11/22 14:57:16 by vdeliere          #+#    #+#             */
+/*   Updated: 2024/11/22 16:40:13 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_digit(long n, int base, char c)
+int	ft_print_digit(int nb)
 {
-  int   count;
-  char  *symbols;
-  
-  if (c == 'X')
-    symbols = "0123456789ABCDEF";
-  else 
-    symbols = "0123456789abcdef";
-  if (n < 0)
-  {
-    write (1, "-", 1);
-    return (ft_print_digit(-n, base, c) + 1);
-  }
-  else if (n < base)
-  {
-    return (ft_print_char(symbols[n]));
-  }
-  else 
-  {
-    count = ft_print_digit((n / base), base, c);
-    return (count + ft_print_digit((n % base), base, c));
-  }
+	int		count;
+	char	*dectab;
+
+	count = 0;
+	dectab = "0123456789";
+	if (nb == -2147483648)
+	{
+		count += write(1, "-2147483648", 11);
+		return (count);
+	}
+	if (nb < 0)
+	{
+		count += write (1, "-", 1);
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		count += ft_print_digit(nb / 10);
+		count += ft_print_char(dectab[nb % 10]);
+	}
+	else
+		count += ft_print_char(dectab[nb]);
+	return (count);
 }

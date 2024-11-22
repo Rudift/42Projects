@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdeliere <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:54:45 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/21 11:44:14 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:23:17 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_char(int c)
+int	ft_print_char(int c)
 {
-  return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
