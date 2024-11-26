@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:19:01 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/25 14:07:54 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:28:55 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ typedef struct s_list
 char	*get_next_line(int fd);
 
 /*Secondaires*/
+void	list_creator(t_list **list, int fd);
+void	append(t_list **list, char *buf);
+int	len_to_newline(t_list *list);
 
 #endif

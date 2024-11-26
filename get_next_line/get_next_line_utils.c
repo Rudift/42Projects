@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:18:25 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/25 16:49:40 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:07:23 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,53 @@ int	len_to_newline(t_list *list)
 	return (len);
 }
 
-//faire fonction search_newline
+void	polish_list(t_list **list)
+{
+	t_list	*last_node;
+	t_list	*clean_node;
+	int	i;
+	int	k;
+	char	*buf;
+
+	buf = malloc(BUFFER_SIZE + 1);
+	clean_node = malloc(sizeof(t_list));
+
+	i = 0;
+	k = 0;
+	while (last_node->str_buf[i] != '\0'
+	 	&& last_node->str_buf[i] != '\n')
+		i++;
+	while (last_node->str_buf[i] != '\0'
+		&& last_node->str_buf[++i])
+		buf[k++] = last_node->str_buf[i];
+	buf[k] = '\0';
+	clean_node->str_buf = buf;
+	clean_node->next = NULL;
+	dealloc(list, clean_node, buf);
+}
+
+void	copy_str(t_list *list, char *str)
+{
+	int	i;
+	int	k;
+
+	if (list == NULL)
+		return ;
+	k = 0;
+	while (list)
+	{
+		i = 0;
+		while (list->str_buf[i])
+		{
+			if (list->str_buf[i] == '\n')
+			{
+				str[k++] = '\n';
+				str[k] = '\0';
+				return ;
+			}
+			str[k++] = list->str_buf[i++];
+		}
+		list = list->next;
+	}
+	str[k] = '\0';
+}
