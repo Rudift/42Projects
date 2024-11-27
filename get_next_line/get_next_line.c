@@ -5,39 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 10:28:09 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/26 14:36:46 by vdeliere         ###   ########.fr       */
+/*   Created: 2024/11/27 09:33:44 by vdeliere          #+#    #+#             */
+/*   Updated: 2024/11/27 14:55:22 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_line(t_list *list)
-{
-	int	str_len;
-	char	*next_str;
-
-	if (list == NULL)
-		return (NULL);
-	str_len = len_to_newline(list);
-	next_str = malloc(str_len + 1);
-	if (next == NULL)
-		return (NULL);
-	copy_str(list, next_str);
-	return (next_str);
-}
-
 char	*get_next_line(int fd)
 {
-	static t_list	*list = NULL;
-	char 				next_line;
+	static char	*stash;
+	char		*line;
+	char		buffer;
+	int			bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
+	stash = (char *)malloc(sizeof(char *));
+	if (stash == NULL)
 		return (NULL);
-	list_creator(&list, fd);
-	if (list == NULL)
-		return (NULL);
-	next_line = get_line(list);
-	polish_list(&list);
-	return (next_line);
+	bytes_read = 1;
+	while (stash_checker(stash) != 1 && bytes_read != 0)
+	{
+		bytes_read = read (fd, buffer, BUFFER_SIZE);
+		stash = ft_strjoin (stash, buffer);
+	}
+	line = ft_strdup (stash);
+	stash_cleaner (stash);
+	if (bytes_read == 0)
+	{
+		free (line);
+		return (free (stash), stash = NULL);
+	}
+	return (line);
+}
+
+int	main(void)
+{
+	int	fd;
+
+	fd = open ("./test.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		printf("Erreur d'ouverture du fichier\n");
+		return (0);
+	}
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	close (fd);
 }
