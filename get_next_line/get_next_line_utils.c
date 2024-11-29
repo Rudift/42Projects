@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:33:53 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/29 12:48:30 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:14:03 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,14 @@ void	ft_bzero(void *s, size_t n)
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i++;
+		if (*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
 	}
 	if (c == '\0')
-		return ((char *)&s[i]);
+		return ((char *)s);
 	return (NULL);
 }
 
@@ -60,10 +57,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		tot_size;
 	int		i;
 	int		j;
-	char	*res;
+	char		*res;
 
 	i = 0;
 	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	tot_size = ft_strlen(s1, '0') + ft_strlen(s2, '0') + 1;
 	res = (char *)malloc(tot_size * sizeof(char));
 	if (!res)
@@ -95,9 +94,11 @@ int	ft_strlen(const char *s, char param)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	if (param == 'n')
 	{
-		while (s[i] != '\n')
+		while (s[i] != '\n' && s[i] != '\0')
 			i++;
 	}
 	else
