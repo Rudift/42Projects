@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:29:54 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/27 13:28:53 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:08:25 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 3
 # endif
 
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdint.h>
 
-/*Principale*/
-char		*get_next_line(int fd);
+/*Principales*/
+char			*get_next_line(int fd);
 
 /*Utilitaires*/
-char		*ft_strjoin(char *s1, char *s2);
-size_t		ft_strlen(char *s);
-char		*ft_strdup(char *s);
-int			stash_checker(char *stash);
-char		*stash_cleaner(char *stash);
+void			*ft_calloc(size_t nmemb, size_t size);
+void			ft_bzero(void *s, size_t n);
+char			*ft_strchr(const char *s, int c);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			*append_buffer(char *basin_buffer, char *read_buffer);
+int			ft_strlen(const char *s);
 #endif
