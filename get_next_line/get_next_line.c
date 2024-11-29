@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:33:44 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/29 10:14:34 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:07:11 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,34 @@
 char	*extract_line(char *basin_buffer)
 {
 	char	*temp;
+	int	i;
 
-	char
-	printf("extract_line :%s(*)\n)", basin_buffer);
-	return(basin_buffer);
+	temp = (char *)malloc((ft_strlen(basin_buffer, 'n') + 2) * sizeof(char));
+	if (!temp)
+		return (NULL);
+	i = 0;
+	while (i < (ft_strlen(basin_buffer, 'n')) + 2)
+	{
+		temp[i] = basin_buffer[i];
+		i++;
+	}
+	temp[i] = '\0';
+	return(temp);
 }
 
 char	*obtain_remaining(char *basin_buffer)
 {
-	printf("obtain_remaining :%s(*)\n)", basin_buffer);
-	return (basin_buffer);
+	char	*temp;
+
+	basin_buffer = ft_strchr(basin_buffer, '\n');
+	basin_buffer++;
+	temp = (char *)malloc((ft_strlen(basin_buffer, '0') + 1) * sizeof(char));
+	temp = basin_buffer;
+	//temp++;
+	//*temp = '\0';
+	printf("(*)%s(*)\n", temp);
+	//free (basin_buffer);
+	return (temp);
 }
 
 static char	*read_from_file(char *basin_buffer, int fd)
@@ -43,6 +61,7 @@ static char	*read_from_file(char *basin_buffer, int fd)
 			return (free(cup_buffer), NULL);
 		cup_buffer[bytes_read] = '\0';
 		basin_buffer = append_buffer(basin_buffer, cup_buffer);
+		printf("reading : %s\n", basin_buffer);
 		if(ft_strchr(basin_buffer, '\n'))
 			break ;
 	}
@@ -65,6 +84,7 @@ char	*get_next_line(int fd)
 		return (free(basin_buffer), NULL);
 	line = extract_line(basin_buffer);
 	basin_buffer= obtain_remaining(basin_buffer);
+	printf("reste : %s\n", basin_buffer);
 	return (line);
 }
 
@@ -86,6 +106,7 @@ int	main(void)
 		count ++;
 		printf("[%d]:%s\n", count, next_line);
 		free(next_line);
+		printf("next line free\n");
 		next_line = NULL;
 	}
 	close(fd);

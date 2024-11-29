@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:33:53 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/29 10:08:07 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:48:30 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	tot_size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	tot_size = ft_strlen(s1, '0') + ft_strlen(s2, '0') + 1;
 	res = (char *)malloc(tot_size * sizeof(char));
 	if (!res)
 		return (NULL);
@@ -90,12 +90,20 @@ char	*append_buffer(char *basin_buffer, char *read_buffer)
 	return (temp);
 }
 
-int	ft_strlen(const char *s)
+int	ft_strlen(const char *s, char param)
 {
 	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
-		i++;
+	if (param == 'n')
+	{
+		while (s[i] != '\n')
+			i++;
+	}
+	else
+	{
+		while (s[i] != '\0')
+			i++;
+	}
 	return (i);
 }
