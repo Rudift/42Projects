@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:29:54 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/29 14:03:36 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:59:57 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void			ft_bzero(void *s, size_t n);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*append_buffer(char *basin_buffer, char *read_buffer);
-int			ft_strlen(const char *s, char param);
+int				ft_strlen(const char *s, char param);
 #endif

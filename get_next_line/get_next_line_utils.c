@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:33:53 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/29 14:14:03 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:14:29 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,30 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*s;
-
-	if (size && (nmemb > SIZE_MAX / size))
-		return (NULL);
-	s = malloc(nmemb * size);
-	if (!s)
-		return (NULL);
-	ft_bzero (s, nmemb * size);
-	return (s);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
+	size_t			total_size;
 	size_t			i;
-	unsigned char	*scopy;
+	unsigned char	*memory;
 
+	if (size && nmemb > SIZE_MAX / size)
+		return (NULL);
+	total_size = nmemb * size;
+	memory = (unsigned char *)malloc(total_size);
+	if (!memory)
+		return (NULL);
 	i = 0;
-	scopy = (unsigned char *)s;
-	while (i < n)
+	while (i < total_size)
 	{
-		scopy[i] = '\0';
+		memory[i] = 0;
 		i++;
 	}
+	return ((void *)memory);
 }
 
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
-		if (*s == (unsigned char)c)
+		if (*s == (char)c)
 			return ((char *)s);
 		s++;
 	}
@@ -57,7 +51,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		tot_size;
 	int		i;
 	int		j;
-	char		*res;
+	char	*res;
 
 	i = 0;
 	j = 0;
@@ -80,9 +74,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	res[i + j] = '\0';
 	return (res);
 }
+
 char	*append_buffer(char *basin_buffer, char *read_buffer)
 {
-	char *temp;
+	char	*temp;
 
 	temp = ft_strjoin(basin_buffer, read_buffer);
 	free(basin_buffer);
@@ -98,12 +93,12 @@ int	ft_strlen(const char *s, char param)
 		return (0);
 	if (param == 'n')
 	{
-		while (s[i] != '\n' && s[i] != '\0')
+		while (s[i] && s[i] != '\n')
 			i++;
 	}
 	else
 	{
-		while (s[i] != '\0')
+		while (s[i])
 			i++;
 	}
 	return (i);

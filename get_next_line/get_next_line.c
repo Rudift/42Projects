@@ -6,7 +6,7 @@
 /*   By: vdeliere <vdeliere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:33:44 by vdeliere          #+#    #+#             */
-/*   Updated: 2024/11/29 14:26:51 by vdeliere         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:16:58 by vdeliere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*extract_line(char *basin_buffer)
 {
 	char	*temp;
-	int	i;
+	int		i;
 
 	if (!basin_buffer || basin_buffer[0] == '\0')
 		return (NULL);
@@ -32,15 +32,15 @@ char	*extract_line(char *basin_buffer)
 	if (basin_buffer[i] == '\n')
 		temp[i++] = '\n';
 	temp[i] = '\0';
-	return(temp);
+	return (temp);
 }
 
 char	*obtain_remaining(char *basin_buffer)
 {
 	char	*temp;
 	char	*newline_pos;
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 
 	newline_pos = ft_strchr(basin_buffer, '\n');
 	if (!newline_pos)
@@ -66,10 +66,10 @@ char	*obtain_remaining(char *basin_buffer)
 
 static char	*read_from_file(char *basin_buffer, int fd)
 {
-	int			bytes_read;
-	char 			*cup_buffer;
+	int		bytes_read;
+	char	*cup_buffer;
 
-	cup_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	cup_buffer = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!cup_buffer)
 		return (NULL);
 	bytes_read = 1;
@@ -77,7 +77,10 @@ static char	*read_from_file(char *basin_buffer, int fd)
 	{
 		bytes_read = read(fd, cup_buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
-			return (free(cup_buffer), NULL);
+		{
+			free(cup_buffer);
+			return (NULL);
+		}
 		cup_buffer[bytes_read] = '\0';
 		basin_buffer = append_buffer(basin_buffer, cup_buffer);
 		if (ft_strchr(basin_buffer, '\n'))
@@ -90,7 +93,7 @@ static char	*read_from_file(char *basin_buffer, int fd)
 char	*get_next_line(int fd)
 {
 	static char	*basin_buffer;
-	char			*line;
+	char		*line;
 
 	if (fd < 0 || read(fd, NULL, 0) < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -100,7 +103,7 @@ char	*get_next_line(int fd)
 	if (!basin_buffer)
 		return (NULL);
 	line = extract_line(basin_buffer);
-	basin_buffer= obtain_remaining(basin_buffer);
+	basin_buffer = obtain_remaining(basin_buffer);
 	return (line);
 }
 
